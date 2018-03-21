@@ -1,0 +1,64 @@
+{
+  "name": "Profile",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "profilePicture": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "deviceToken": {
+      "type": "string",
+      "required": false
+    },
+    "agentIdAtInsuranceCompany": {
+      "type": "string",
+      "required": false
+    },
+    "finalRating": {
+      "type": "number",
+      "required": true
+    },
+    "level": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "GeoPoint",
+      "required": true
+    },
+    "qrImageUrl": {
+      "type": "string",
+      "required": false
+    },
+    "businessCardLink": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
