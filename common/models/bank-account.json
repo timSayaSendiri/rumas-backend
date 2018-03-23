@@ -1,0 +1,35 @@
+{
+  "name": "BankAccount",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "bankAccountNumber": {
+      "type": "string",
+      "required": true
+    },
+    "amount": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "blockChainAddress": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
