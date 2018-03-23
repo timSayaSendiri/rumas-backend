@@ -61,5 +61,9 @@
   "House": {
     "dataSource": "mongoDB",
     "public": true
+  },
+  "BankAccount": {
+    "dataSource": "mongoDB",
+    "public": true
   }
 }

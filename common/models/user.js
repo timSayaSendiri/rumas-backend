@@ -417,67 +417,7 @@ module.exports = function(User) {
   // remoteh here please :D
 
   User.afterRemote('register', (context, remoteMethodOutput, next) => {
-    // only run on production env, coz radundancy data`
-    let user = remoteMethodOutput.userDetail;
-
-    if (process.env.NODE_ENV == 'production') {
-      console.log('remote method output : ', remoteMethodOutput);
-      // clear unimportant things
-      delete user.insuranceCompany.description;
-      delete user.token;
-      delete user.success;
-      delete user.message;
-
-      user.objectID = user.id;
-      let flatedObj = flattenObject(user);
-
-      algolia.addObject(flatedObj, (err, content) => {
-        console.log('the content was submitted : ', content);
-      });
-    } else {
-      console.log('skiped! because not production env.');
-    }
-    // save initial review
-    let app = User.app;
-    let Review = app.models.Review;
-    let Profile = app.models.Profile;
-
-    let initialRating = 4;
-    Review.create({
-      userId: user.id,
-      comment: 'Agen yang handal dan terpercaya',
-      rating: initialRating.toFixed(1),
-    }).then(review => {
-      console.log('created review : ', review);
-    }).catch(err => {
-      console.log('error when create initial review : ', err);
-    });
-
-    // generate QR code
-
-    console.log(' process.env.PWD : ', process.env.PWD)
-    let fileLocation = '/assets/images/qr/';
-    let fileName = `qr-${user.id}.png`;
-    let fullQRImagePath = process.env.PROJECT_PATH + fileLocation + fileName;
-    let qrContent = `${process.env.WEB_HOST}/profile/${user.id}`;
-
-    QRCode.toFile(fullQRImagePath, qrContent, {}, function(err, url) {
-      cloudinary.uploader.upload(fullQRImagePath, function(result) { 
-        console.log(result) 
-        Profile.upsertWithWhere({
-          userId: user.id,
-        }, {
-          qrImageUrl: result.secure_url,
-        }).then(profile => {
-          console.log('profile update with qr image : ', profile)
-        }).catch(err => {
-          console.log('error when update profile : ', err)
-        })
-      });
-      console.log('error : ', err)
-      console.log('file : ', url);
     
-    })
 
     next();
   });

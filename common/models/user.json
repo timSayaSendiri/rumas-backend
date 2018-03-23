@@ -30,6 +30,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "bankAccounts": {
+      "type": "hasOne",
+      "model": "BankAccount",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [
