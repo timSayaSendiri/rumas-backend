@@ -164,7 +164,7 @@ module.exports = function(User) {
     description: "Custom response after login - include profile"
   })
 
-  User.register = function(email, password, insuranceAgentId, cb) {
+  User.register = function(email, password, cb) {
     let response = {
       success: false,
       message: 'something when wrong',
@@ -239,10 +239,6 @@ module.exports = function(User) {
         arg: 'password',
         type: 'string'
       },
-      {
-        arg: 'insuranceAgentId',
-        type: 'string',
-      }
     ],
     returns: [
       {
