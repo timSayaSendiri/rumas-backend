@@ -38,6 +38,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "loans": {
+      "type": "hasMany",
+      "model": "Loan",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [

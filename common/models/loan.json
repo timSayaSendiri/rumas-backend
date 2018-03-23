@@ -1,0 +1,39 @@
+{
+  "name": "Loan",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "priceInRupiah": {
+      "type": "number",
+      "required": true
+    },
+    "goldWeight": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "house": {
+      "type": "belongsTo",
+      "model": "House",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

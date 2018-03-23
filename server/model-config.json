@@ -65,5 +65,9 @@
   "BankAccount": {
     "dataSource": "mongoDB",
     "public": true
+  },
+  "Loan": {
+    "dataSource": "mongoDB",
+    "public": true
   }
 }
