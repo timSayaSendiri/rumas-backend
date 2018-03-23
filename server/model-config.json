@@ -57,5 +57,9 @@
   "Profile": {
     "dataSource": "mongoDB",
     "public": true
+  },
+  "House": {
+    "dataSource": "mongoDB",
+    "public": true
   }
 }
