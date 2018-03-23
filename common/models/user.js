@@ -1,5 +1,4 @@
 'use strict';
-let firebaseAdmin = require('../../server/firebase-admin.js');
 
 var flattenObject = function(ob) {
   var toReturn = {};
@@ -369,24 +368,24 @@ module.exports = function(User) {
       };
       // Send a message to the device corresponding to the provided
       // registration token with the provided options.
-      firebaseAdmin.messaging().sendToDevice([convertedUser.profile.deviceToken], payload, options)
-        .then(function(response) {
-          if (response.failureCount > 0) {
-            response.message = 'notification cannot send, please check this device token ID : ' + convertedUser.profile.deviceToken;
-            response.success = false;
-          } else if (response.successCount > 0) {
-            response.message = 'successfully send to ' + convertedUser.profile.deviceToken;
-            response.success = true;
-          }
+      // firebaseAdmin.messaging().sendToDevice([convertedUser.profile.deviceToken], payload, options)
+      //   .then(function(response) {
+      //     if (response.failureCount > 0) {
+      //       response.message = 'notification cannot send, please check this device token ID : ' + convertedUser.profile.deviceToken;
+      //       response.success = false;
+      //     } else if (response.successCount > 0) {
+      //       response.message = 'successfully send to ' + convertedUser.profile.deviceToken;
+      //       response.success = true;
+      //     }
 
-          console.log('Successfully sent message:', response);
-          return cb(null, response.message, response.success);
-        })
-        .catch(function(error) {
-          console.log('Error sending message: ', error);
-          response.message = 'error sending message : ' + error;
-          return cb(null, response.message, response.success);
-      });
+      //     console.log('Successfully sent message:', response);
+      //     return cb(null, response.message, response.success);
+      //   })
+      //   .catch(function(error) {
+      //     console.log('Error sending message: ', error);
+      //     response.message = 'error sending message : ' + error;
+      //     return cb(null, response.message, response.success);
+      // });
     }).catch(err => {
       response.message = `error when trying to query user : ${err} `;
       return cb(null, response.message, response.success);
