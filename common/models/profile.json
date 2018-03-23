@@ -10,27 +10,11 @@
       "type": "string",
       "required": true
     },
-    "profilePicture": {
-      "type": "string",
+    "birthDate": {
+      "type": "date",
       "required": true
     },
-    "city": {
-      "type": "string",
-      "required": true
-    },
-    "deviceToken": {
-      "type": "string",
-      "required": false
-    },
-    "agentIdAtInsuranceCompany": {
-      "type": "string",
-      "required": false
-    },
-    "finalRating": {
-      "type": "number",
-      "required": true
-    },
-    "level": {
+    "nik": {
       "type": "string",
       "required": true
     },
@@ -38,17 +22,25 @@
       "type": "string",
       "required": true
     },
-    "location": {
-      "type": "GeoPoint",
+    "cifNumber": {
+      "type": "string",
       "required": true
     },
-    "qrImageUrl": {
+    "motherName": {
       "type": "string",
-      "required": false
+      "required": true
     },
-    "businessCardLink": {
-      "type": "string",
-      "required": false
+    "profilePictureName": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "location": {
+      "type": "geopoint"
+    },
+    "deviceToken": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -56,7 +48,10 @@
     "user": {
       "type": "belongsTo",
       "model": "user",
-      "foreignKey": ""
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],

@@ -23,15 +23,13 @@
       "foreignKey": "principalId",
       "through": "RoleMapping"
     },
-    "insuranceCompany": {
-      "type": "belongsTo",
-      "model": "InsuranceCompany",
-      "foreignKey": ""
-    },
-    "reviews": {
-      "type": "hasMany",
-      "model": "Review",
-      "foreignKey": ""
+    "profiles": {
+      "type": "hasOne",
+      "model": "Profile",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [
