@@ -13,6 +13,10 @@
     "goldWeight": {
       "type": "number",
       "required": true
+    },
+    "tenor": {
+     "type": "number",
+     "required": true
     }
   },
   "validations": [],
