@@ -69,5 +69,9 @@
   "Loan": {
     "dataSource": "mongoDB",
     "public": true
+  },
+  "Transaction": {
+    "dataSource": "mongoDB",
+    "public": true
   }
 }

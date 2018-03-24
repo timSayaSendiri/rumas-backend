@@ -13,6 +13,10 @@
     "goldWeight": {
       "type": "number",
       "required": true
+    },
+    "tenor": {
+      "type": "number",
+      "required": true
     }
   },
   "validations": [],
@@ -32,8 +36,23 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "transactions": {
+      "type": "hasMany",
+      "model": "Transaction",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

@@ -1,50 +1,56 @@
 {
-  "name": "Profile",
+  "name": "Transaction",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "name": {
+    "type": {
       "type": "string",
       "required": true
     },
-    "birthDate": {
+    "goldWeight": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "amountInRupiah": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "date": {
       "type": "date",
       "required": true
     },
-    "nik": {
+    "poorOfLoan": {
+      "type": "number",
+      "required": true
+    },
+    "poorOfMonth": {
+      "type": "number",
+      "required": true
+    },
+    "toEthAddress": {
       "type": "string",
       "required": true
     },
-    "phone": {
+    "fromEthAddress": {
       "type": "string",
       "required": true
-    },
-    "cifNumber": {
-      "type": "string",
-      "required": true
-    },
-    "motherName": {
-      "type": "string",
-      "required": true
-    },
-    "profilePictureName": {
-      "type": "string"
-    },
-    "address": {
-      "type": "string"
-    },
-    "location": {
-      "type": "geopoint"
-    },
-    "deviceToken": {
-      "type": "string"
     }
   },
   "validations": [],
   "relations": {
+    "loan": {
+      "type": "belongsTo",
+      "model": "Loan",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
     "user": {
       "type": "belongsTo",
       "model": "user",
