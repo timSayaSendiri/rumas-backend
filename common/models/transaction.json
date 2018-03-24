@@ -1,25 +1,43 @@
 {
-  "name": "Loan",
+  "name": "Transaction",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "priceInRupiah": {
-      "type": "number",
+    "type": {
+      "type": "string",
       "required": true
     },
     "goldWeight": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "amountInRupiah": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "poorOfLoan": {
+      "type": "number",
+      "required": true
+    },
+    "poorOfMonth": {
       "type": "number",
       "required": true
     }
   },
   "validations": [],
   "relations": {
-    "house": {
+    "loan": {
       "type": "belongsTo",
-      "model": "House",
+      "model": "Loan",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
@@ -28,14 +46,6 @@
     "user": {
       "type": "belongsTo",
       "model": "user",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    },
-    "transactions": {
-      "type": "hasMany",
-      "model": "Transaction",
       "foreignKey": "",
       "options": {
         "nestRemoting": true
