@@ -31,6 +31,14 @@
     "poorOfMonth": {
       "type": "number",
       "required": true
+    },
+    "toEthAddress": {
+      "type": "string",
+      "required": true
+    },
+    "fromEthAddress": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
