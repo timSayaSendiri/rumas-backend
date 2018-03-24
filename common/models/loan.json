@@ -15,8 +15,8 @@
       "required": true
     },
     "tenor": {
-     "type": "number",
-     "required": true
+      "type": "number",
+      "required": true
     }
   },
   "validations": [],
@@ -46,6 +46,13 @@
       }
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }
