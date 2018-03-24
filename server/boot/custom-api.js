@@ -48,6 +48,7 @@ module.exports = function(server) {
       tgl_lahir,
       nama_ibu_kandung
     } = req.query
+
     try {
       const { data: { payload } } = await axios.post(CREATE_USER_API, {
         nik,
@@ -113,9 +114,57 @@ module.exports = function(server) {
     }
   }
 
+  const createCreditSubmission = async (req, res) => {
+    const CREATE_SUBMISSION_API = 'https://mortgtech-eval-prod.apigee.net/btn-mortgtech/credit-submission'
+    const {
+      nik,
+      nama,
+      tgl_lahir,
+      nama_ibu_kandung,
+      pendapatan,
+      email,
+      nomor_hp,
+      nomor_cif
+    } = req.query
+    
+    try {
+      const { data: { payload } } = await axios.post(CREATE_SUBMISSION_API, {
+        nik,
+        nama,
+        tgl_lahir,
+        nama_ibu_kandung,
+        pendapatan,
+        email,
+        nomor_hp,
+        nomor_cif
+      }, requestConfig)
+
+      if (payload) {
+        res
+          .status(200)
+          .send({
+            status: 200,
+            message: 'Submission has been created',
+            payload
+          })
+      }
+
+    } catch (err) {
+      console.log(err);
+      res
+        .status(400)
+        .send({
+          status: 400,
+          message: 'Something wrong with your request',
+          error: err.message
+        })
+    }
+  }
+
   router.get('/api/house-list', getHouseListController);
   router.get('/api/user-register', postUserRegister);
   router.get('/api/account-creation', accountCreation);
+  router.get('/api/credit-submission', createCreditSubmission)
 
   server.use(router);
 };
